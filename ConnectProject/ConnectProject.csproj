@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <IsPackable>false</IsPackable>
-    <Configurations>Debug;Release;Chrome.Preprod;Firefox.Preprod;mobile.Iphone.12Pro.Preprod</Configurations>
+    <Configurations>Debug;Release;Chrome.Preprod;Firefox.Preprod;mobile.Iphone.12Pro.Preprod;Chrome.Test</Configurations>
     <OutputType>Library</OutputType>
   </PropertyGroup>
 	
@@ -87,6 +87,7 @@
 
   <ItemGroup>
     <PackageReference Include="Appium.WebDriver" Version="4.3.1" />
+    <PackageReference Include="EnterpriseFramework" Version="1.0.0" />
     <PackageReference Include="IdentityModel" Version="5.1.0" />
     <PackageReference Include="log4net" Version="2.0.12" />
     <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="5.0.0" />

@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace AutomationFramework.Features
+namespace ConnectProject.Features
 {
     using TechTalk.SpecFlow;
     using System;
