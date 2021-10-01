@@ -16,6 +16,7 @@ namespace AutomationFramework.Steps
         public ScenarioContext ScenarioContext;
         public readonly IRunData Rundata;
         public LoginPage loginPage;
+        public LoginPage2 loginPage2;
 
         public BaseSteps(IWebDriver webDriver, ScenarioContext scenarioContext, IRunData runData, PageObjectManager pageObjectManager)
         {

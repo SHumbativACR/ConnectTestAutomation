@@ -14,9 +14,8 @@ namespace AutomationFramework.Pages
         private readonly By _loginLink = By.LinkText("Login with ACR ID");
         private readonly By _okta_SignIn_Btn = By.XPath("//h2[@class='okta-form-title o-form-head']");
 
-
         ////*************** PAGE METHODS ***************////
-
+        
         public string GetWelcomeMessage() => GetText(_welcomeMessage);
         public void ClickLoginLink() => Click(_loginLink);
         public string GetOktaSignInText() => GetText(_okta_SignIn_Btn);
