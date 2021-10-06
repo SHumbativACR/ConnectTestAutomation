@@ -20,27 +20,41 @@ using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
 using static Enterprise.Framework.Actions.BaseActions;
 
+
 namespace AutomationFramework.Steps
 {
-    [Binding]
     public class LoginSteps : BaseSteps
     {
-      
-        //LandingPage homePage => new LandingPage(Driver);       
+       // readonly string url = "https://connect-test.acr.org/";
+        readonly string username = "acrconnect.testuser1@yahoo.com";
+        readonly string password = "TEstaccount1";
+        readonly string expectedPageTitle = "Home Page";
+
         public LoginSteps(IWebDriver webDriver, ScenarioContext scenarioContext, IRunData runData, PageObjectManager pageObjectManager) : base(webDriver, scenarioContext, runData, pageObjectManager)
         {
             loginPage = pageObjectManager.GetLoginPage();
-          
         }
 
-        [Given(@"User is in welcome page of the application")]
-        public void GivenILaunchTheApplication(Table table) => Assert.AreEqual(table.Rows[0]["WelcomeUserMessage"], loginPage.GetWelcomeMessage());
 
-        [When(@"User clicks login link")]
-        public void ClickLoginLink() => loginPage.ClickLoginLink();
+        [Given(@"User navigates to Connect test environment Login Page")]
+        public void UserNavigatesConnectTestEnvironmentLoginPage()
+        {
+           // Driver.Navigate().GoToUrl(url);
+        }
 
-        [Then(@"User should see okta signin button")]
-        public void GetSignInText(Table table) => Assert.AreEqual(table.Rows[0]["SignInMessage"], loginPage.GetOktaSignInText());
+
+        [When(@"User clicks on Sign in button and enters a valid username and password")]
+        public void WhenUserClicksOnSignInButtonAndEntersAValidUsernameAndPassword()
+        {
+            loginPage.SignIn(username, password);
+        }
+
+        [Then(@"User lands on Connect homepage and Page Title is Home Page")]
+        public void ThenUserLandsOnConnectHomepageAndPageTitleIsHomePage()
+        {
+            Assert.AreEqual(expectedPageTitle, loginPage.GetHomepageTitle());
+        }
+
 
 
     }

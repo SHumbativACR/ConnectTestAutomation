@@ -20,8 +20,8 @@ namespace ConnectProject.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("Login")]
-    public partial class LoginFeature
+    [NUnit.Framework.DescriptionAttribute("ACR Connect Login")]
+    public partial class ACRConnectLoginFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
@@ -35,7 +35,7 @@ namespace ConnectProject.Features
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Login", "\tVerify valid and invalid login scenarios", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "ACR Connect Login", "\tVerifying if user can sign in to Connect successfully with valid credentials", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -74,20 +74,20 @@ namespace ConnectProject.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Verify user can see login page")]
+        [NUnit.Framework.DescriptionAttribute("Verify user is able to sign in successfully and Page title is \'Home Page\'")]
         [NUnit.Framework.CategoryAttribute("SmokeTest")]
-        [NUnit.Framework.CategoryAttribute("US1309")]
-        [NUnit.Framework.CategoryAttribute("TC1231")]
+        [NUnit.Framework.CategoryAttribute("US3009")]
+        [NUnit.Framework.CategoryAttribute("TC0845")]
         [NUnit.Framework.CategoryAttribute("test-loginTest")]
-        public virtual void VerifyUserCanSeeLoginPage()
+        public virtual void VerifyUserIsAbleToSignInSuccessfullyAndPageTitleIsHomePage()
         {
             string[] tagsOfScenario = new string[] {
                     "SmokeTest",
-                    "US1309",
-                    "TC1231",
+                    "US3009",
+                    "TC0845",
                     "test-loginTest"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify user can see login page", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify user is able to sign in successfully and Page title is \'Home Page\'", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 6
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -108,22 +108,14 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-                TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
-                            "WelcomeUserMessage"});
-                table1.AddRow(new string[] {
-                            "Welcome, Guest"});
 #line 7
- testRunner.Given("User is in welcome page of the application", ((string)(null)), table1, "Given ");
+ testRunner.Given("User navigates to Connect test environment Login Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 10
- testRunner.When("User clicks login link", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 8
+ testRunner.When("User clicks on Sign in button and enters a valid username and password", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-                TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
-                            "SignInMessage"});
-                table2.AddRow(new string[] {
-                            "Sign In"});
-#line 11
- testRunner.Then("User should see okta signin button", ((string)(null)), table2, "Then ");
+#line 9
+ testRunner.Then("User lands on Connect homepage and Page Title is Home Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

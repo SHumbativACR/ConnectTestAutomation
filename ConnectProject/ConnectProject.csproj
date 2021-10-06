@@ -81,24 +81,16 @@
 	  <SpecFlowObsoleteCodeBehindFiles Remove="TestResults\**" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <SpecFlowFeatureFiles Remove="Features\Login2.feature" />
-	</ItemGroup>
-
   <ItemGroup>
     <SpecFlowObsoleteCodeBehindFiles Remove="Features\Login - Copy.feature.cs" />
-    <SpecFlowObsoleteCodeBehindFiles Remove="Features\Login.feature.cs" />
     <SpecFlowObsoleteCodeBehindFiles Remove="Features\Registration - Copy.feature.cs" />
     <SpecFlowObsoleteCodeBehindFiles Remove="Features\Registration-3 - Copy.feature.cs" />
     <SpecFlowObsoleteCodeBehindFiles Remove="Features\Registration-4 - Copy.feature.cs" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Features\Login2.feature" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Appium.WebDriver" Version="4.3.1" />
+    <PackageReference Include="Bogus" Version="33.1.1" />
     <PackageReference Include="EnterpriseFramework" Version="1.0.0" />
     <PackageReference Include="IdentityModel" Version="5.1.0" />
     <PackageReference Include="log4net" Version="2.0.12" />
@@ -147,12 +139,19 @@
 	
 
   <ItemGroup>
+    <Compile Update="Features\FileServer.feature.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Update="Features\SignIn.feature.cs">
       <DependentUpon>SignIn.feature</DependentUpon>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
+    <SpecFlowFeatureFiles Update="Features\FileServer.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>FileServer.feature.cs</LastGenOutput>
+    </SpecFlowFeatureFiles>
     <SpecFlowFeatureFiles Update="Features\SignIn.feature">
       <Visible>$(UsingMicrosoftNETSdk)</Visible>
       <CodeBehindFile>%(RelativeDir)%(Filename).feature$(DefaultLanguageSourceExtension)</CodeBehindFile>

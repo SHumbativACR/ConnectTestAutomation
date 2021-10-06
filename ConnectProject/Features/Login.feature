@@ -1,13 +1,9 @@
-﻿Feature: Login
-	Verify valid and invalid login scenarios
+﻿Feature: ACR Connect Login
+	Verifying if user can sign in to Connect successfully with valid credentials
 
-@SmokeTest @US1309 @TC1231
+@SmokeTest @US3009 @TC0845
 @test-loginTest
-Scenario: Verify user can see login page    
-	Given User is in welcome page of the application
-	| WelcomeUserMessage |
-	| Welcome, Guest |
-	When User clicks login link
-	Then User should see okta signin button
-	| SignInMessage |
-	| Sign In       |
+Scenario: Verify user is able to sign in successfully and Page title is 'Home Page'
+	Given User navigates to Connect test environment Login Page
+	When User clicks on Sign in button and enters a valid username and password
+	Then User lands on Connect homepage and Page Title is Home Page

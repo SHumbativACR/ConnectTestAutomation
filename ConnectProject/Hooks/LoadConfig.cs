@@ -9,7 +9,7 @@ using AutomationFramework.ProjectLib;
 using NUnit.Framework;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-[assembly: Parallelizable(ParallelScope.Fixtures)]
+//[assembly: Parallelizable(ParallelScope.Fixtures)]
 //[assembly: Parallelizable(ParallelScope.Self)]
 //[assembly: Parallelize(Scope = ExecutionScope.MethodLevel)]
 [assembly: log4net.Config.XmlConfigurator(ConfigFile = "log4net.config")]
