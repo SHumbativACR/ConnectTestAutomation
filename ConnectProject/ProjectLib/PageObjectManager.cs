@@ -21,5 +21,6 @@ namespace AutomationFramework.ProjectLib
         public LoginPage GetLoginPage() => _loginPage == null ? new LoginPage(_driver) : _loginPage;
         public DicomPage GetDicomPage() => _dicomPage == null ? new DicomPage(_driver) : _dicomPage;
         public HomePage GetHomePage() => _homepage == null ? new HomePage(_driver) : _homepage;
+
     }    
 }

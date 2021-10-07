@@ -1,5 +1,6 @@
 ﻿using AutomationFramework.Pages;
 using AutomationFramework.ProjectLib;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
@@ -16,14 +17,12 @@ namespace AutomationFramework.Steps
         public ScenarioContext ScenarioContext;
         public readonly IRunData Rundata;
         public LoginPage loginPage;
-        public LoginPage loginPage2;
 
         public BaseSteps(IWebDriver webDriver, ScenarioContext scenarioContext, IRunData runData, PageObjectManager pageObjectManager)
         {
             ScenarioContext = scenarioContext;
             Driver = webDriver;
             Rundata = runData;
-
         }
 
     }

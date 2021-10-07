@@ -11,51 +11,43 @@ using Bogus;
 
 namespace AutomationFramework.Steps
 {
-    public class FileServerSteps : BaseSteps
+    public class DicomwebServerSteps : BaseSteps
     {
         private DicomPage dicomPage;
         private HomePage homePage;
         private LoginPage loginPage;
         readonly string username = "acrconnect.testuser1@yahoo.com";
         readonly string password = "TEstaccount1";
-        String serverName = "FileServer_" + new Faker().Name.FirstName();
+        String serverName = "DICOMweb_" + new Faker().Name.FirstName();
         String expectedMessage = "DICOM/WebDICOM source server created successfully.";
 
-        public FileServerSteps(IWebDriver webDriver, ScenarioContext scenarioContext, IRunData runData, PageObjectManager pageObjectManager) : base(webDriver, scenarioContext, runData, pageObjectManager)
+        public DicomwebServerSteps(IWebDriver webDriver, ScenarioContext scenarioContext, IRunData runData, PageObjectManager pageObjectManager) : base(webDriver, scenarioContext, runData, pageObjectManager)
         {
             loginPage = pageObjectManager.GetLoginPage();
             dicomPage = pageObjectManager.GetDicomPage();
             homePage = pageObjectManager.GetHomePage();
         }
 
-        
-        [Given(@"User navigates to Connect DICOM service")]
-        public void UserNavigatesToConnectDICOMServive()
-        {
-            loginPage.SignIn(username,password);
-            homePage.NavigateToDICOMService();
-        }
 
-        [Given(@"Clicks on Servers sub-tab")]
-        public void ClicksOnServersSubTab()
+        [Given(@"User navigates to Connect DICOM service and clicks on Servers sub-tab")]
+        public void UserNavigatesToConnectDICOMServiveAndClicksServersSubtab()
         {
+            loginPage.SignIn(username, password);
+            homePage.NavigateToDICOMService();
             dicomPage.NavigateToDICOMServersSubTab();
         }
 
-
-        [When(@"User creates a new file server and saves it")]
-        public void UserCreatesNewFileServerAndSavesIt()
+        [When(@"User creates a new DICOMweb server and saves it")]
+        public void UserCreatesNewDicomwebServerAndSavesIt()
         {
-            dicomPage.CreateFileServer(serverName);
+            dicomPage.CreateDicomwebServer(serverName);
         }
 
-        [Then(@"Confirmation message is displayed successfully")]
-        public void ConfirmationMessageIsDisplayedSuccessfully()
+        [Then(@"Confirmation message is displayed successfully2")]
+        public void ConfirmationMessageIsDisplayedSuccessfully2()
         {
             Assert.AreEqual(expectedMessage, dicomPage.GetCreationConfirmationMessage());
         }
-
-
 
 
     }

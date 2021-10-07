@@ -12,6 +12,7 @@ namespace AutomationFramework.Pages
 
         // ===== Elements ===== //
 
+        String dicomwebURL = "http://dcm4chee-arc:8080/dcm4chee-arc/aets/DCM4CHEE/rs/";
         // Import Data & Annotations sub-tab Elements
         private readonly By importDataTab =By.XPath("//li/a[text()='Import data & annotations']");
         private readonly By dataSourceDropdown = By.XPath("//select[@ID='sever']");
@@ -38,13 +39,14 @@ namespace AutomationFramework.Pages
         // Parent -- Following-sibling -- preceding-sibling VERIFY ->   //td[contains(text(),'bd')]/following-sibling::td/following-sibling::td/following-sibling::td//button[contains(text(),'Verify')]
         // Delete ->  //td[contains(text(),'bd')]/following-sibling::td/following-sibling::td/following-sibling::td//button[contains(text(),'Delete')]
         // ACREDIT UNITS ->   //a[contains(text(),'Unit# 04')]/parent::td//following-sibling::td[contains(text(),'Approved')]
-        private readonly By deleteServer = By.XPath("(//td[contains(text(),'DICOMWEB_')]/following-sibling::td)[3]/button[contains(text(),'Delete')]");
-        private readonly By confirmDeletion = By.XPath(".modal-dialog.modal-dialog-centered.modal-sm > .modal-content .btn.btn-primary");
+        private readonly By deleteServer = By.XPath("(//td[contains(text(),'DICOMweb_')]/following-sibling::td)[3]/button[contains(text(),'Delete')]");
+        private readonly By confirmDeletion = By.CssSelector(".modal-dialog.modal-dialog-centered.modal-sm > .modal-content .btn.btn-primary");
         private readonly By editServer = By.XPath("(//td[contains(text(),'TestServer')]/following-sibling::td)[3]/button[contains(text(),'Edit')]");
         private readonly By editServer2 = By.XPath("(//td[contains(text(),'TestServer')]/following-sibling::td)[3]/button[contains(text(),'Edit')]");
         private readonly By serverName = By.CssSelector("#editModal [placeholder='Name']");
         private readonly By saveModifications = By.CssSelector("div#editModal > div[role='document'] .btn.btn-primary");
         private readonly By serverConfirmationMessage = By.XPath("//span[text()='DICOM/WebDICOM source server created successfully.']");
+        private readonly By serverRemovalConfirmationMessage = By.XPath("//span[contains(text(),'deleted successfully.')]");
 
         // Listener sub-tab Elements
         private readonly By listenerSubTab = By.CssSelector("li:nth-of-type(1) > .nav-link");
@@ -105,10 +107,9 @@ namespace AutomationFramework.Pages
             Click(browseFile);
             WaitUntilElementClickable(okButton);
             Click(okButton);
-            WaitFor(saveButton);
-           // WaitUntilElementClickable(saveButton);
+            WaitUntilElementVisible(saveButton);
             Click(saveButton);
-            WaitUntilElementDisplayed(serverConfirmationMessage);
+            WaitUntilElementVisible(serverConfirmationMessage);
         }
        
         public String GetCreationConfirmationMessage()
@@ -116,10 +117,29 @@ namespace AutomationFramework.Pages
             return getConfirmationText = Driver.FindElement(serverConfirmationMessage).Text;
         }
 
+        public void CreateDicomwebServer(String dicomwebServerName)
+        {
+            Click(createNewServer);
+            Driver.FindElement(serverNameField).SendKeys(dicomwebServerName);
+            Click(serverDropDown);
+            Click(dicomWebServer);
+            Driver.FindElement(hostIpField).SendKeys(dicomwebURL);
+            Click(saveButton);
+            WaitUntilElementVisible(serverConfirmationMessage);
+        }
 
+        public void DeleteServer()
+        {
+            Click(deleteServer);
+            Sleep(1);
+            Click(confirmDeletion);
+            WaitUntilElementVisible(serverRemovalConfirmationMessage);
+        }
 
-
-
+        public String GetRemovalConfirmation()
+        {
+            return confirmationMessage = Driver.FindElement(serverRemovalConfirmationMessage).Text;
+        }
 
 
 

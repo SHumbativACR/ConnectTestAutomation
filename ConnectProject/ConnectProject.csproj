@@ -139,6 +139,12 @@
 	
 
   <ItemGroup>
+    <Compile Update="Features\DeleteServer.feature.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Features\DICOMwebServer.feature.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Update="Features\FileServer.feature.cs">
       <DesignTime>True</DesignTime>
     </Compile>
@@ -148,6 +154,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <SpecFlowFeatureFiles Update="Features\DeleteServer.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>DeleteServer.feature.cs</LastGenOutput>
+    </SpecFlowFeatureFiles>
+    <SpecFlowFeatureFiles Update="Features\DICOMwebServer.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>DICOMwebServer.feature.cs</LastGenOutput>
+    </SpecFlowFeatureFiles>
     <SpecFlowFeatureFiles Update="Features\FileServer.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>FileServer.feature.cs</LastGenOutput>

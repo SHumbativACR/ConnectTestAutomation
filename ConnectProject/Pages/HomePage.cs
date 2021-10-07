@@ -82,8 +82,7 @@ namespace AutomationFramework.Pages
         {
             Click(dicomServiceLogo);
             Driver.SwitchTo().Window(Driver.WindowHandles[1]);
-            WaitForPageToLoad();
-
+            Sleep(5);
         }
 
 
