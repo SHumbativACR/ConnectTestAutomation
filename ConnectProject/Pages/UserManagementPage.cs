@@ -22,7 +22,7 @@ namespace AutomationFramework.Pages
         private readonly By confirmInvitation = By.CssSelector("div#inviteUser > div[role='document'] .btn.btn-primary");
         private readonly By copyToClipboard = By.CssSelector("div#inviteUser > div[role='document'] .btn.btn-primary");
         private readonly By notifyUserWindowAlert = By.CssSelector("div#inviteUser > div[role='document'] div[role='alert']");
-        private readonly By editRole = By.XPath("(//td[@title='acrconnect.testuser10@gmail.com']/following-sibling::td)[4]/*[@title='Edit user']");
+        private readonly By editRole = By.XPath("(//td[@title='acrconnect.testuser12@gmail.com']/following-sibling::td)[4]/*[@title='Edit user']");
         private readonly By editRoleRegression = By.XPath("(//td[@title='acrconnect.testuser14@gmail.com']/following-sibling::td)[4]/*[@title='Edit user']");
         private readonly By resendInvitation = By.XPath("//mat-icon[@aria-label='Resend Invite']");
         private readonly By enableDisableToggle = By.XPath("//div[@class='mat-slide-toggle-bar mat-slide-toggle-bar-no-side-margin']");
@@ -41,10 +41,12 @@ namespace AutomationFramework.Pages
         private readonly By reasonForRequest = By.CssSelector("input#txt_reason");
         private readonly By requestSubmit = By.CssSelector("button#btn_RequestSubmit");
         private readonly By requestAccessModalText = By.XPath("(//div[@class='modal-body'])[1]");
+        private readonly By oktaSignInButton = By.XPath("//*[text()='Sign in with ACR ID']");
+
 
         // Approve/Deny access requests Elements
         private readonly By requested_status = By.XPath("//td[contains(text(),'Requested')]");
-        private readonly By rejectApproveAccessIcon = By.XPath("(//td[@title='acrconnect.testuser40@gmail.com']/following-sibling::td)[4]/*[@title='Reject/Approve Access Request']");
+        private readonly By rejectApproveAccessIcon = By.XPath("(//td[@title='acrconnect.testuser43@gmail.com']/following-sibling::td)[4]/*[@title='Reject/Approve Access Request']");
         private readonly By cancelButton = By.CssSelector(".modal-footer > button:nth-of-type(3)");
         private readonly By denyButton = By.CssSelector("div#editUser > div[role='document']  .modal-footer > button:nth-of-type(2)");
         private readonly By approveButton = By.CssSelector("div#editUser > div[role='document'] .btn.btn-primary");
@@ -55,13 +57,40 @@ namespace AutomationFramework.Pages
         private readonly By selectAilabApp = By.CssSelector("div#editUser > div[role='document'] .ng-pristine.ng-untouched.ng-valid .example-margin.mat-accent.mat-checkbox.ng-pristine.ng-untouched.ng-valid > .mat-checkbox-layout > .mat-checkbox-inner-container");
 
 
+        // ===== Actions on Page ===== //
 
+        public void DenyAccessRequest()
+        {
+            Click(rejectApproveAccessIcon);
+            Click(denyButton);
+            Click(doneButton);
+            Click(userNameSignout);
+            Click(signoutButton);
+            WaitUntilElementVisible(oktaSignInButton);
+        }
 
+        public void ApproveAccessRequest()
+        {
+            Click(rejectApproveAccessIcon);
+            Click(approveButton);
+            Click(doneButton);
+            Click(userNameSignout);
+            Click(signoutButton);
+            WaitUntilElementVisible(oktaSignInButton);
+        }
 
-
-
-
-
+        public void EnableDisableUser()
+        {
+            Click(editRole);
+            Click(enableDisableCheckbox);
+            Sleep(2);
+            Click(updateButton);
+            //Click(updateNotification);
+            Sleep(10);
+            Click(userNameSignout);
+            Click(signoutButton);
+            WaitUntilElementVisible(oktaSignInButton);
+        }
 
 
     }

@@ -42,7 +42,7 @@ namespace AutomationFramework.Pages
         private readonly By weeklyServiceLogStartDate = By.CssSelector("tr:nth-of-type(2) > td:nth-of-type(2) > .mat-calendar-body-cell-content");
         private readonly By weeklyServiceLogEndDate = By.CssSelector("tr:nth-of-type(2) > td:nth-of-type(6) > .mat-calendar-body-cell-content");
 
-
+        // ===== Actions on Page ===== //
 
 
 

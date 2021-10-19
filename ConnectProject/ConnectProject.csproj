@@ -139,13 +139,28 @@
 	
 
   <ItemGroup>
+    <Compile Update="Features\ApproveAccessRequest.feature.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Features\DenyAccessRequest.feature.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Update="Features\DeleteServer.feature.cs">
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Update="Features\DICOMwebServer.feature.cs">
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Update="Features\DisableUser.feature.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Features\EnableUser.feature.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Update="Features\FileServer.feature.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Features\RequestAccess.feature.cs">
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Update="Features\SignIn.feature.cs">
@@ -154,6 +169,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <SpecFlowFeatureFiles Update="Features\ApproveAccessRequest.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>ApproveAccessRequest.feature.cs</LastGenOutput>
+    </SpecFlowFeatureFiles>
+    <SpecFlowFeatureFiles Update="Features\DenyAccessRequest.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>DenyAccessRequest.feature.cs</LastGenOutput>
+    </SpecFlowFeatureFiles>
     <SpecFlowFeatureFiles Update="Features\DeleteServer.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>DeleteServer.feature.cs</LastGenOutput>
@@ -162,9 +185,21 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>DICOMwebServer.feature.cs</LastGenOutput>
     </SpecFlowFeatureFiles>
+    <SpecFlowFeatureFiles Update="Features\DisableUser.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>DisableUser.feature.cs</LastGenOutput>
+    </SpecFlowFeatureFiles>
+    <SpecFlowFeatureFiles Update="Features\EnableUser.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>EnableUser.feature.cs</LastGenOutput>
+    </SpecFlowFeatureFiles>
     <SpecFlowFeatureFiles Update="Features\FileServer.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>FileServer.feature.cs</LastGenOutput>
+    </SpecFlowFeatureFiles>
+    <SpecFlowFeatureFiles Update="Features\RequestAccess.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>RequestAccess.feature.cs</LastGenOutput>
     </SpecFlowFeatureFiles>
     <SpecFlowFeatureFiles Update="Features\SignIn.feature">
       <Visible>$(UsingMicrosoftNETSdk)</Visible>

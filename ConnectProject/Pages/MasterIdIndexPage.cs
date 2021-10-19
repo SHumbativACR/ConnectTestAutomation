@@ -16,7 +16,7 @@ namespace AutomationFramework.Pages
         private readonly By backToHomeScreen = By.CssSelector(".navbar-link");
 
 
-
+        // ===== Actions on Page ===== //
 
 
 

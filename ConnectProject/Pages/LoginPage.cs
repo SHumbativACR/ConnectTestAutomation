@@ -20,7 +20,8 @@ namespace AutomationFramework.Pages
         private readonly By dataManagerLogo = By.XPath("(//a/div)[3]");
 
 
-        // ===== Methods ===== //
+        // ===== Actions on Page ===== //
+
         public void SignIn(string username, string password)
         {
             Click(oktaSignInButton);

@@ -20,22 +20,22 @@ namespace ConnectProject.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("DICOMwebServer")]
-    public partial class DICOMwebServerFeature
+    [NUnit.Framework.DescriptionAttribute("RequestAccess")]
+    public partial class RequestAccessFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
         private string[] _featureTags = ((string[])(null));
         
-#line 1 "DICOMwebServer.feature"
+#line 1 "RequestAccess.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "DICOMwebServer", "\tVerifying if user is able to create a DICOMweb server", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "RequestAccess", "\tVerifying user is able to request an access to ACR Connect", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -74,18 +74,16 @@ namespace ConnectProject.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Verify user is able to create a DICOMweb server and confirmation message is displ" +
-            "ayed once the server is created")]
+        [NUnit.Framework.DescriptionAttribute("Verify that user can request access to Connect")]
         [NUnit.Framework.CategoryAttribute("SmokeTest")]
-        [NUnit.Framework.CategoryAttribute("test-DicomServerTest")]
-        public virtual void VerifyUserIsAbleToCreateADICOMwebServerAndConfirmationMessageIsDisplayedOnceTheServerIsCreated()
+        [NUnit.Framework.CategoryAttribute("test-RequestAccessTest")]
+        public virtual void VerifyThatUserCanRequestAccessToConnect()
         {
             string[] tagsOfScenario = new string[] {
                     "SmokeTest",
-                    "test-DicomServerTest"};
+                    "test-RequestAccessTest"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify user is able to create a DICOMweb server and confirmation message is displ" +
-                    "ayed once the server is created", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify that user can request access to Connect", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 6
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -107,12 +105,9 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 7
- testRunner.Given("User navigates to Connect DICOM service and clicks on Servers sub-tab", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("User requests access to Connect", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 8
- testRunner.When("User creates a new DICOMweb server and saves it", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 9
  testRunner.Then("Confirmation message is displayed successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

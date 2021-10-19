@@ -9,13 +9,13 @@ namespace AutomationFramework.Pages
     {
         public HomePage(IWebDriver webDriver) : base(webDriver) { }
 
-        private readonly String URL = "https://connect-test.acr.org/";
-        private readonly String URL2 = "https://connect-staging.acr.org/";
-        private readonly String URL3 = "https://cdv-connectdeploy/";
-        private readonly String HOME_PAGE_TITLE = "Home Page";
-        private readonly String AILAB_PAGE_TITLE = "Home - AI-LAB";
-        private readonly String DICOM_PAGE_TITLE = "DICOM";
-        private readonly String DATA_MANGER_PAGE_TITLE = "Data Manager";
+        private readonly string URL = "https://connect-test.acr.org/";
+        private readonly string URL2 = "https://connect-staging.acr.org/";
+        private readonly string URL3 = "https://cdv-connectdeploy/";
+        private readonly string HOME_PAGE_TITLE = "Home Page";
+        private readonly string AILAB_PAGE_TITLE = "Home - AI-LAB";
+        private readonly string DICOM_PAGE_TITLE = "DICOM";
+        private readonly string DATA_MANGER_PAGE_TITLE = "Data Manager";
 
         // ========= Elements ========= //
 
@@ -37,9 +37,10 @@ namespace AutomationFramework.Pages
         private readonly By reasonForRequest = By.CssSelector("input#txt_reason");
         private readonly By requestSubmit = By.CssSelector("button#btn_RequestSubmit");
         private readonly By requestAccessModalText = By.XPath("(//div[@class='modal-body'])[1]");
-        public readonly String requestNotification;
-        public readonly String requestConfirmation;
-        public readonly String denialNotification;
+        public string requestNotification;
+        public string requestConfirmation;
+        public string denialNotification;
+        public string disabledNotification;
 
         // Home Page Icons
         private readonly By ailabLogo = By.XPath("//div/div/img[@alt='image']");
@@ -61,22 +62,25 @@ namespace AutomationFramework.Pages
         private readonly By createTab = By.XPath("//ul//a[@href='Create/TrainAndTest']");
         private readonly By runTab = By.XPath("//ul//a[@href='Run/OnPrem']/span[@class='site-menu-title']");
 
-    /*
-        protected void SwitchToTab(String tabTitle)
-        {
-            tabs = new ArrayList<String>(Driver.getWindowHandles());
-            for (int i = 0; i < tabs.size(); i++)
+
+        // ===== Actions on Page ===== //
+
+        /*
+            protected void SwitchToTab(String tabTitle)
             {
-                driver.switchTo().window(tabs.get(i));
-                String windowTitle = driver.getTitle();
-                if (windowTitle.equalsIgnoreCase(tabTitle))
+                tabs = new ArrayList<String>(Driver.getWindowHandles());
+                for (int i = 0; i < tabs.size(); i++)
                 {
-                    break;
+                    driver.switchTo().window(tabs.get(i));
+                    String windowTitle = driver.getTitle();
+                    if (windowTitle.equalsIgnoreCase(tabTitle))
+                    {
+                        break;
+                    }
                 }
             }
-        }
 
-    */
+        */
 
         public void NavigateToDICOMService()
         {
@@ -85,8 +89,51 @@ namespace AutomationFramework.Pages
             Sleep(5);
         }
 
+        public void NavigateToUserManagement()
+        {
+            Click(userManagementLogo);
+      //    switchToTab("User Management");
+            Sleep(1);
+        }
 
+        public void RequestAccess(String username, String password)
+        {
+            Click(acrIdSignin);
+            Driver.FindElement(usernameInputTestEnv).SendKeys(username);
+            Click(nextButton);
+            Driver.FindElement(passwordInputTestEnv).SendKeys(password);
+            Click(signinButton);
+            WaitUntilElementVisible(yesButton);
+            Click(yesButton);
+            Driver.FindElement(reasonForRequest).SendKeys("TEST Request");
+            Click(requestSubmit);
+            Sleep(1);
+        }
 
+        public String GetRequestConfirmation()
+        {
+            return requestConfirmation = Driver.FindElement(By.XPath("/html//div[@id='div_reqSubmit']//a[@href='/External/Challenge?redirectUrl=%2F&provider=oidc']//small[@class='text-center text-danger']")).Text;
+        }
+
+        public void SignIn(String username, String password)
+        {
+            Click(acrIdSignin);
+            Driver.FindElement(usernameInputTestEnv).SendKeys(username);
+            Click(nextButton);
+            Driver.FindElement(passwordInputTestEnv).SendKeys(password);
+            Click(signinButton);
+            Sleep(3);
+        }
+
+        public String GetDenialNotification()
+        {
+            return denialNotification = Driver.FindElement(By.XPath("//*[@class='text-center text-danger']")).Text;
+        }
+
+        public String GetDisabledNotification()
+        {
+            return disabledNotification = Driver.FindElement(By.XPath("//*[@class='text-center text-danger']")).Text;
+        }
 
 
     }
