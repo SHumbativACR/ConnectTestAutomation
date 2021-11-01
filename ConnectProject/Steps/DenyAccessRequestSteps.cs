@@ -17,8 +17,8 @@ namespace AutomationFramework.Steps
         private HomePage homePage;
         private UserManagementPage userManagementPage;
         private LoginPage loginPage;
-        readonly string username1 = "acrconnect.testuser43@gmail.com";
-        readonly string password1 = "TestAccount43";
+        readonly string username1 = "acrconnect.testuser23@yahoo.com";
+        readonly string password1 = "TestAccount23";
         readonly string username = "acrconnect.testuser1@yahoo.com";
         readonly string password = "TEstaccount1";
         string expectedNotification = "Your request was previously rejected by administrator. Please contact your administrator to reinstate your request.";

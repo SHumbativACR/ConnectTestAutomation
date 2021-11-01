@@ -15,8 +15,8 @@ namespace AutomationFramework.Steps
     public class RequestAccessSteps : BaseSteps
     {
         private HomePage homePage;
-        readonly string username = "acrconnect.testuser43@gmail.com";
-        readonly string password = "TestAccount43";
+        readonly string username = "acrconnect.testuser23@yahoo.com";
+        readonly string password = "TestAccount23";
         String expectedMessage = "Your request has been submitted. You will receive a notification after the administrator has approved your request.";
 
         public RequestAccessSteps(IWebDriver webDriver, ScenarioContext scenarioContext, IRunData runData, PageObjectManager pageObjectManager) : base(webDriver, scenarioContext, runData, pageObjectManager)
@@ -30,8 +30,8 @@ namespace AutomationFramework.Steps
             homePage.RequestAccess(username,password);
         }
 
-        [Then(@"Confirmation message is displayed successfully")]
-        public void ConfirmationMessageDisplayedSuccessfully()
+        [Then(@"Confirmation message is displayed successfully4")]
+        public void ConfirmationMessageDisplayedSuccessfully4()
         {
             String actualMessage = homePage.GetRequestConfirmation();
             Assert.AreEqual(expectedMessage, actualMessage);

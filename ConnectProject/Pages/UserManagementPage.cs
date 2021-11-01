@@ -18,7 +18,8 @@ namespace AutomationFramework.Pages
         private readonly By administratorRole = By.XPath("/html//div[@id='inviteUser']/div[@role='document']/div[@class='modal-content']//form//input[@name='adminRole']");
         private readonly By platformUserRole = By.XPath("/html//div[@id='inviteUser']/div[@role='document']/div[@class='modal-content']//form//div[@class='col-md-4']/div[2]/input[@name='userRole']");
         private readonly By appUserRole = By.XPath("/html//div[@id='inviteUser']/div[@role='document']/div[@class='modal-content']//form//div[@class='col-md-4']/div[3]/input[@name='userRole']");
-        private readonly By doneButton = By.CssSelector("div#inviteUser > div[role='document'] .btn.btn-secondary");
+        private readonly By doneButton = By.CssSelector("app-user-list [role='dialog']:nth-child(3) .modal-footer [data-dismiss]");
+        private readonly By closeWindow = By.CssSelector("button#closebutton > span");
         private readonly By confirmInvitation = By.CssSelector("div#inviteUser > div[role='document'] .btn.btn-primary");
         private readonly By copyToClipboard = By.CssSelector("div#inviteUser > div[role='document'] .btn.btn-primary");
         private readonly By notifyUserWindowAlert = By.CssSelector("div#inviteUser > div[role='document'] div[role='alert']");
@@ -46,7 +47,7 @@ namespace AutomationFramework.Pages
 
         // Approve/Deny access requests Elements
         private readonly By requested_status = By.XPath("//td[contains(text(),'Requested')]");
-        private readonly By rejectApproveAccessIcon = By.XPath("(//td[@title='acrconnect.testuser43@gmail.com']/following-sibling::td)[4]/*[@title='Reject/Approve Access Request']");
+        private readonly By rejectApproveAccessIcon = By.XPath("(//td[@title='acrconnect.testuser22@yahoo.com']/following-sibling::td)[4]/*[@title='Reject/Approve Access Request']");
         private readonly By cancelButton = By.CssSelector(".modal-footer > button:nth-of-type(3)");
         private readonly By denyButton = By.CssSelector("div#editUser > div[role='document']  .modal-footer > button:nth-of-type(2)");
         private readonly By approveButton = By.CssSelector("div#editUser > div[role='document'] .btn.btn-primary");
@@ -62,8 +63,10 @@ namespace AutomationFramework.Pages
         public void DenyAccessRequest()
         {
             Click(rejectApproveAccessIcon);
+            Sleep(2);
             Click(denyButton);
-            Click(doneButton);
+            Sleep(2);
+            Click(closeWindow);
             Click(userNameSignout);
             Click(signoutButton);
             WaitUntilElementVisible(oktaSignInButton);
@@ -72,7 +75,10 @@ namespace AutomationFramework.Pages
         public void ApproveAccessRequest()
         {
             Click(rejectApproveAccessIcon);
+            Sleep(2);
+            Click(assignPlatformUserRole);
             Click(approveButton);
+            Sleep(2);
             Click(doneButton);
             Click(userNameSignout);
             Click(signoutButton);
