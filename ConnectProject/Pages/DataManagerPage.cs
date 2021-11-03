@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
 
 namespace AutomationFramework.Pages
 {
@@ -41,6 +42,7 @@ namespace AutomationFramework.Pages
         private readonly By editDatasetSaveButton = By.XPath("//div[@id='editDatasetModal']/div[@class='modal-dialog modal-dialog-centered']//div[@class='modal-body']//form//button[@class='btn btn-primary btn_saveDataSet']");
         public String editedDataset;
         private readonly By datasetUpdateNotification = By.CssSelector("div[role='alertdialog']");
+        private readonly By resultDataset = By.CssSelector("div#left_reportItems > div[title]");
 
 
         // Dataset Edit
@@ -68,9 +70,39 @@ namespace AutomationFramework.Pages
 
         // ===== Actions on Page ===== //
 
+        public void SearchAndSelectDataset(string dataset)
+        {
+            Driver.FindElement(searchInput).Clear();
+            Driver.FindElement(searchInput).SendKeys(dataset);
+            //   Actions action = new Actions(Driver);
+            WaitForStaleElementAndClick_1(resultDataset);
+         //   Driver.FindElement(By.CssSelector("div#left_reportItems > div[title='BD18']")).Click();
+         //   action.DoubleClick(resultDataset);
+            Sleep(3);
+        }
 
+        public string clickOnSelectAllDatasets()
+        {
+            Click(selectAllButton);
+            Sleep(2);
+            return actualDataCount = Driver.FindElement(By.CssSelector(".badge-success")).Text;
+        }
 
+        public void DeleteDataset(String title)
+        {
+            By dataset_delete_button = By.CssSelector("div[title='" + title + "'] .fa.fa-trash.text-danger");
+            Click(dataset_delete_button);
+            Sleep(2);
+            //      By delete_confirmation_modal = css("div#deleteConfirmModal > div .modal-content");
+            //      waitUntilElementVisible(delete_confirmation_modal);
+            Click(deleteConfirmation);
+            Sleep(2);
+        }
 
+        public string GetNoRecordsFoundMessage()
+        {
+            return message = Driver.FindElement(By.XPath("//span[text()='No Records Found']")).Text;
+        }
 
 
     }

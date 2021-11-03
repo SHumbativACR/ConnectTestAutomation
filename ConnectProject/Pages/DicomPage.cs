@@ -19,9 +19,10 @@ namespace AutomationFramework.Pages
         private readonly By importDataTab =By.XPath("//li/a[text()='Import data & annotations']");
         private readonly By dataSourceDropdown = By.XPath("//select[@ID='sever']");
         private readonly By dcm4cheeWeb = By.XPath("//option[text()='DCM4CHEE Web']");
-        private readonly By dcm4cheeWebTestEnv = By.XPath("//option[text()='Local PACS (DICOMWEB)']");
+        private readonly By dcm4cheeWebTestEnv = By.XPath("//option[text()='Local PACS (DICOMweb)']");
         private readonly By chooseFileButton = By.XPath("//input");
         private readonly By fileDropArea = By.CssSelector(".upload_background");
+
 
         // Servers sub-tab Elements
         private readonly By serversTab = By.CssSelector("li:nth-of-type(2) > .nav-link");
@@ -100,51 +101,58 @@ namespace AutomationFramework.Pages
             Click(serversTab);
         }
 
+        public void NavigateToDICOMImportSubTab()
+        {
+            Click(importDataTab);
+        }
 
-        /*
-         public void dropFile(File filePath, By locator) {
-      WebElement target = findElement(locator);
 
-      if (!filePath.exists())
-         throw new WebDriverException("File not found: " + filePath.toString());
+        /* 
+          public void DropFile(File filePath, By locator) {
+       IWebElement target = Driver.FindElement(locator);
 
-      JavascriptExecutor jse = (JavascriptExecutor) driver;
-      WebDriverWait wait = new WebDriverWait(driver, 30);
+      // if (!filePath.exists())
+        //  throw new WebDriverException("File not found: " + filePath.ToString());
 
-      String js_drop_file =
-              "var target = arguments[0]," +
-                      "    offsetX = arguments[1]," +
-                      "    offsetY = arguments[2]," +
-                      "    document = target.ownerDocument || document," +
-                      "    window = document.defaultView || window;" +
-                      "" +
-                      "var input = document.createElement('INPUT');" +
-                      "input.type = 'file';" +
-                      "input.style.display = 'none';" +
-                      "input.onchange = function () {" +
-                      "  var rect = target.getBoundingClientRect()," +
-                      "      x = rect.left + (offsetX || (rect.width >> 1))," +
-                      "      y = rect.top + (offsetY || (rect.height >> 1))," +
-                      "      dataTransfer = { files: this.files };" +
-                      "" +
-                      "  ['dragenter', 'dragover', 'drop'].forEach(function (name) {" +
-                      "    var evt = document.createEvent('MouseEvent');" +
-                      "    evt.initMouseEvent(name, !0, !0, window, 0, 0, 0, x, y, !1, !1, !1, !1, 0, null);" +
-                      "    evt.dataTransfer = dataTransfer;" +
-                      "    target.dispatchEvent(evt);" +
-                      "  });" +
-                      "" +
-                      "  setTimeout(function () { document.body.removeChild(input); }, 25);" +
-                      "};" +
-                      "document.body.appendChild(input);" +
-                      "return input;";
+       IJavaScriptExecutor jse = (IJavaScriptExecutor) Driver;
+     //  WebDriverWait wait = new WebDriverWait(Driver, 30);
 
-      WebElement input = (WebElement) jse.executeScript(js_drop_file, target, 0, 0);
-      input.sendKeys(filePath.getAbsoluteFile().toString());
-      wait.until(ExpectedConditions.stalenessOf(input));
-   }
-       
+       String js_drop_file =
+               "var target = arguments[0]," +
+                       "    offsetX = arguments[1]," +
+                       "    offsetY = arguments[2]," +
+                       "    document = target.ownerDocument || document," +
+                       "    window = document.defaultView || window;" +
+                       "" +
+                       "var input = document.createElement('INPUT');" +
+                       "input.type = 'file';" +
+                       "input.style.display = 'none';" +
+                       "input.onchange = function () {" +
+                       "  var rect = target.getBoundingClientRect()," +
+                       "      x = rect.left + (offsetX || (rect.width >> 1))," +
+                       "      y = rect.top + (offsetY || (rect.height >> 1))," +
+                       "      dataTransfer = { files: this.files };" +
+                       "" +
+                       "  ['dragenter', 'dragover', 'drop'].forEach(function (name) {" +
+                       "    var evt = document.createEvent('MouseEvent');" +
+                       "    evt.initMouseEvent(name, !0, !0, window, 0, 0, 0, x, y, !1, !1, !1, !1, 0, null);" +
+                       "    evt.dataTransfer = dataTransfer;" +
+                       "    target.dispatchEvent(evt);" +
+                       "  });" +
+                       "" +
+                       "  setTimeout(function () { document.body.removeChild(input); }, 25);" +
+                       "};" +
+                       "document.body.appendChild(input);" +
+                       "return input;";
+
+       IWebElement input = (IWebElement) jse.ExecuteScript(js_drop_file, target, 0, 0);
+      // input.SendKeys(filePath.getAbsoluteFile().toString());
+     //  wait.Until(ExpectedConditions.StalenessOf(input));
+    }
+
          */
+
+
 
 
         public void CreateFileServer(String fileServerName)
@@ -190,11 +198,36 @@ namespace AutomationFramework.Pages
             return confirmationMessage = Driver.FindElement(serverRemovalConfirmationMessage).Text;
         }
 
+        public void UploadBDFile(String datasetName)
+        {
+            Click(dataSourceDropdown);
+            Click(dcm4cheeWebTestEnv);
+            IWebElement fileUpload = Driver.FindElement(chooseFileButton);
+            fileUpload.SendKeys(@"C:\Users\shumbativ\Desktop\TestData_v2\bd_20.xlsx");
+            Driver.FindElement(datasetNameInput).SendKeys(datasetName);
+            Sleep(1);
+            Click(doneButton);
+            Sleep(8);
+        }
 
-        
+        public void UploadPXSFile(String datasetName)
+        {
+            Click(dataSourceDropdown);
+            Click(dcm4cheeWebTestEnv);
+            IWebElement fileUpload = Driver.FindElement(chooseFileButton);
+            fileUpload.SendKeys(@"C:\Users\shumbativ\Desktop\TestData_v2\covid19.xlsx");
+            Sleep(2);
+            Driver.FindElement(datasetNameInput).SendKeys(datasetName);
+            Click(doneButton);
+            Sleep(5);
+        }
 
+        public void SwitchToHomePage()
+        {
+            Driver.SwitchTo().Window(Driver.WindowHandles[0]);
+        }
 
-
+       
 
 
 

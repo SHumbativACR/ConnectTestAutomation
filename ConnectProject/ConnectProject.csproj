@@ -142,6 +142,9 @@
     <Compile Update="Features\ApproveAccessRequest.feature.cs">
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Update="Features\DeleteDataset.feature.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Update="Features\DenyAccessRequest.feature.cs">
       <DesignTime>True</DesignTime>
     </Compile>
@@ -160,6 +163,12 @@
     <Compile Update="Features\FileServer.feature.cs">
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Update="Features\ImportBDFile.feature.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Features\ImportPXSFile.feature.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Update="Features\RequestAccess.feature.cs">
       <DesignTime>True</DesignTime>
     </Compile>
@@ -172,6 +181,10 @@
     <SpecFlowFeatureFiles Update="Features\ApproveAccessRequest.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>ApproveAccessRequest.feature.cs</LastGenOutput>
+    </SpecFlowFeatureFiles>
+    <SpecFlowFeatureFiles Update="Features\DeleteDataset.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>DeleteDataset.feature.cs</LastGenOutput>
     </SpecFlowFeatureFiles>
     <SpecFlowFeatureFiles Update="Features\DenyAccessRequest.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
@@ -196,6 +209,14 @@
     <SpecFlowFeatureFiles Update="Features\FileServer.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>FileServer.feature.cs</LastGenOutput>
+    </SpecFlowFeatureFiles>
+    <SpecFlowFeatureFiles Update="Features\ImportBDFile.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>ImportBDFile.feature.cs</LastGenOutput>
+    </SpecFlowFeatureFiles>
+    <SpecFlowFeatureFiles Update="Features\ImportPXSFile.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>ImportPXSFile.feature.cs</LastGenOutput>
     </SpecFlowFeatureFiles>
     <SpecFlowFeatureFiles Update="Features\RequestAccess.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>

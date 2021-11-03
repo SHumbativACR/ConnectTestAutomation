@@ -68,11 +68,11 @@ namespace AutomationFramework.Pages
         /*
             protected void SwitchToTab(String tabTitle)
             {
-                tabs = new ArrayList<String>(Driver.getWindowHandles());
+                tabs = new ArrayList<String>(Driver.WindowHandles);
                 for (int i = 0; i < tabs.size(); i++)
                 {
-                    driver.switchTo().window(tabs.get(i));
-                    String windowTitle = driver.getTitle();
+                    Driver.SwitchTo().Window(tabs.get(i));
+                    String windowTitle = Driver.getTitle();
                     if (windowTitle.equalsIgnoreCase(tabTitle))
                     {
                         break;
@@ -86,7 +86,7 @@ namespace AutomationFramework.Pages
         {
             Click(dicomServiceLogo);
             Driver.SwitchTo().Window(Driver.WindowHandles[1]);
-            Sleep(5);
+            Sleep(6);
         }
 
         public void NavigateToUserManagement()
@@ -94,6 +94,13 @@ namespace AutomationFramework.Pages
             Click(userManagementLogo);
       //    switchToTab("User Management");
             Sleep(1);
+        }
+
+        public void NavigateToDataManagerService()
+        {
+            Click(dataDanagerLogo);
+            Driver.SwitchTo().Window(Driver.WindowHandles[2]);
+            Sleep(4);
         }
 
         public void RequestAccess(String username, String password)

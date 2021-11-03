@@ -13,6 +13,7 @@ namespace AutomationFramework.ProjectLib
         private DicomPage _dicomPage;
         private HomePage _homepage;
         private UserManagementPage _userManagementPage;
+        private DataManagerPage _dataManagerPage;
 
         public PageObjectManager(IWebDriver webDriver)
         {
@@ -23,7 +24,8 @@ namespace AutomationFramework.ProjectLib
         public DicomPage GetDicomPage() => _dicomPage == null ? new DicomPage(_driver) : _dicomPage;
         public HomePage GetHomePage() => _homepage == null ? new HomePage(_driver) : _homepage;
         public UserManagementPage GetUserManagementPage() => _userManagementPage == null ? new UserManagementPage(_driver) : _userManagementPage;
-    
-    
-    }    
+        public DataManagerPage GetDataManagerPage() => _dataManagerPage == null ? new DataManagerPage(_driver) : _dataManagerPage;
+
+
+    }
 }
