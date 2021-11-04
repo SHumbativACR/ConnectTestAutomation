@@ -100,7 +100,7 @@ namespace AutomationFramework.Pages
         {
             Click(dataDanagerLogo);
             Driver.SwitchTo().Window(Driver.WindowHandles[2]);
-            Sleep(4);
+            Sleep(5);
         }
 
         public void RequestAccess(String username, String password)

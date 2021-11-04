@@ -139,7 +139,16 @@
 	
 
   <ItemGroup>
+    <Compile Update="Features\AnonymizeDataset.feature.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Update="Features\ApproveAccessRequest.feature.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Features\CopyDatasetWithAnnotations.feature.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Features\CopyDatasetWOutAnnotations.feature.cs">
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Update="Features\DeleteDataset.feature.cs">
@@ -172,15 +181,30 @@
     <Compile Update="Features\RequestAccess.feature.cs">
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Update="Features\SelectAll.feature.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Update="Features\SignIn.feature.cs">
       <DependentUpon>SignIn.feature</DependentUpon>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
+    <SpecFlowFeatureFiles Update="Features\AnonymizeDataset.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>AnonymizeDataset.feature.cs</LastGenOutput>
+    </SpecFlowFeatureFiles>
     <SpecFlowFeatureFiles Update="Features\ApproveAccessRequest.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>ApproveAccessRequest.feature.cs</LastGenOutput>
+    </SpecFlowFeatureFiles>
+    <SpecFlowFeatureFiles Update="Features\CopyDatasetWithAnnotations.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>CopyDatasetWithAnnotations.feature.cs</LastGenOutput>
+    </SpecFlowFeatureFiles>
+    <SpecFlowFeatureFiles Update="Features\CopyDatasetWOutAnnotations.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>CopyDatasetWOutAnnotations.feature.cs</LastGenOutput>
     </SpecFlowFeatureFiles>
     <SpecFlowFeatureFiles Update="Features\DeleteDataset.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
@@ -221,6 +245,10 @@
     <SpecFlowFeatureFiles Update="Features\RequestAccess.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>RequestAccess.feature.cs</LastGenOutput>
+    </SpecFlowFeatureFiles>
+    <SpecFlowFeatureFiles Update="Features\SelectAll.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>SelectAll.feature.cs</LastGenOutput>
     </SpecFlowFeatureFiles>
     <SpecFlowFeatureFiles Update="Features\SignIn.feature">
       <Visible>$(UsingMicrosoftNETSdk)</Visible>

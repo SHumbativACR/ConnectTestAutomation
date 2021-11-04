@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
+using OpenQA.Selenium.Support.UI;
 
 namespace AutomationFramework.Pages
 {
@@ -104,6 +105,45 @@ namespace AutomationFramework.Pages
             return message = Driver.FindElement(By.XPath("//span[text()='No Records Found']")).Text;
         }
 
+        public void CopyDatasetWithoutAnnotations(string dataset)
+        {
+            Click(selectAllButton);
+            Click(copyButton);
+            Driver.FindElement(createNewCopyDataset).SendKeys(dataset);
+            Sleep(2);
+            Click(confirmCopy);
+            Sleep(3);
+        }
 
-    }
+        public void CopyDatasetWithAnnotations(string dataset)
+        {
+            Click(selectAllButton);
+            Click(copyButton);
+            Driver.FindElement(createNewCopyDataset).SendKeys(dataset);
+            Click(copyStudiesButton);
+            Sleep(2);
+            Click(confirmCopy);
+            Sleep(3);
+        }
+
+
+        public void AnonymizationWithDefaultProfile(string datasetName)
+        {
+            Click(anonymizeButton);
+            Sleep(2);
+            IWebElement selectAnonProfile = Driver.FindElement(By.XPath("//div[@id='anonymizeDataModal']/div[@class='modal-dialog modal-lg']/div[@class='modal-content']/div[@class='modal-body']/div[@class='container-fluid']//select"));
+            selectAnonProfile.Click();
+            SelectElement select = new SelectElement(selectAnonProfile);
+            Sleep(1);
+            select.SelectByText("DefaultProfile");
+            Driver.FindElement(outputAnonymizationDataset).SendKeys(datasetName);
+            Click(emptySpot);
+            Click(confirmAnonymizationButton);
+            WaitUntilElementVisible(anonConfirmation);
+            Sleep(3);
+        }
+
+
+
+        }
 }

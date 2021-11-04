@@ -210,6 +210,19 @@ namespace AutomationFramework.Pages
             Sleep(8);
         }
 
+        public void UploadBDFile2(String datasetName)
+        {
+            Click(dataSourceDropdown);
+            Click(dcm4cheeWebTestEnv);
+            IWebElement fileUpload = Driver.FindElement(chooseFileButton);
+            fileUpload.SendKeys(@"C:\Users\shumbativ\Desktop\TestData_v2\BD_auto.xlsx");
+            Driver.FindElement(datasetNameInput).SendKeys(datasetName);
+            Sleep(1);
+            Click(doneButton);
+            Sleep(8);
+        }
+
+
         public void UploadPXSFile(String datasetName)
         {
             Click(dataSourceDropdown);
