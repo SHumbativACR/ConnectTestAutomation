@@ -1,4 +1,4 @@
-﻿Feature: DenyAccessRequest
+﻿Feature: ACR DenyAccessRequest
 	Verifying if admin user is able to deny access requests to ACR Connect
 
 @SmokeTest

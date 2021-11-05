@@ -1,4 +1,4 @@
-﻿Feature: RequestAccess
+﻿Feature: ACR Connect RequestAccess
 	Verifying user is able to request an access to ACR Connect
 
 @SmokeTest

@@ -1,4 +1,4 @@
-﻿Feature: DICOMwebServer
+﻿Feature: ACR Connect DICOMwebServer
 	Verifying if user is able to create a DICOMweb server
 
 @SmokeTest

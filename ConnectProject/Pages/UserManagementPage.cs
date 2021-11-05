@@ -47,7 +47,7 @@ namespace AutomationFramework.Pages
 
         // Approve/Deny access requests Elements
         private readonly By requested_status = By.XPath("//td[contains(text(),'Requested')]");
-        private readonly By rejectApproveAccessIcon = By.XPath("(//td[@title='acrconnect.testuser22@yahoo.com']/following-sibling::td)[4]/*[@title='Reject/Approve Access Request']");
+        private readonly By rejectApproveAccessIcon = By.XPath("(//td[@title='acrconnect.testuser25@yahoo.com']/following-sibling::td)[4]/*[@title='Reject/Approve Access Request']");
         private readonly By cancelButton = By.CssSelector(".modal-footer > button:nth-of-type(3)");
         private readonly By denyButton = By.CssSelector("div#editUser > div[role='document']  .modal-footer > button:nth-of-type(2)");
         private readonly By approveButton = By.CssSelector("div#editUser > div[role='document'] .btn.btn-primary");
