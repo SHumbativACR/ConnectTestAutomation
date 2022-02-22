@@ -106,7 +106,7 @@
     <PackageReference Include="Selenium.Firefox.WebDriver" Version="0.27.0" />
     <PackageReference Include="Selenium.Support" Version="3.141.0" />
     <PackageReference Include="Selenium.WebDriver" Version="3.141.0" />
-    <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="95.0.4638.5400" />
+    <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="97.0.4692.7100" />
     <PackageReference Include="SpecFlow" Version="3.9.22" />
     <PackageReference Include="SpecFlow.Assist.Dynamic" Version="1.4.2" />
     <PackageReference Include="SpecFlow.NUnit" Version="3.9.22" />
@@ -151,7 +151,13 @@
     <Compile Update="Features\CopyDatasetWOutAnnotations.feature.cs">
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Update="Features\CreateListener.feature.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Update="Features\DeleteDataset.feature.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Features\DeleteListener.feature.cs">
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Update="Features\DenyAccessRequest.feature.cs">
@@ -176,6 +182,9 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Update="Features\ImportPXSFile.feature.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Features\ModifyListener.feature.cs">
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Update="Features\RequestAccess.feature.cs">
@@ -206,9 +215,17 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>CopyDatasetWOutAnnotations.feature.cs</LastGenOutput>
     </SpecFlowFeatureFiles>
+    <SpecFlowFeatureFiles Update="Features\CreateListener.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>CreateListener.feature.cs</LastGenOutput>
+    </SpecFlowFeatureFiles>
     <SpecFlowFeatureFiles Update="Features\DeleteDataset.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>DeleteDataset.feature.cs</LastGenOutput>
+    </SpecFlowFeatureFiles>
+    <SpecFlowFeatureFiles Update="Features\DeleteListener.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>DeleteListener.feature.cs</LastGenOutput>
     </SpecFlowFeatureFiles>
     <SpecFlowFeatureFiles Update="Features\DenyAccessRequest.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
@@ -241,6 +258,10 @@
     <SpecFlowFeatureFiles Update="Features\ImportPXSFile.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>ImportPXSFile.feature.cs</LastGenOutput>
+    </SpecFlowFeatureFiles>
+    <SpecFlowFeatureFiles Update="Features\ModifyListener.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>ModifyListener.feature.cs</LastGenOutput>
     </SpecFlowFeatureFiles>
     <SpecFlowFeatureFiles Update="Features\RequestAccess.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>

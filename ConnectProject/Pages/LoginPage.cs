@@ -25,6 +25,7 @@ namespace AutomationFramework.Pages
         public void SignIn(string username, string password)
         {
             Click(oktaSignInButton);
+          //  WaitForPageToLoad();
             Driver.FindElement(usernameInput).SendKeys(username);
             Click(nextButton);
             Driver.FindElement(passwordInput).SendKeys(password);
@@ -42,7 +43,7 @@ namespace AutomationFramework.Pages
             Click(confirmLogout);
         }
 
-
+       
 
 
 

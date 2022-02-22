@@ -57,7 +57,21 @@ namespace AutomationFramework.Pages
         private readonly By stopListener = By.CssSelector(".mat-button-wrapper");
         private readonly By listenerStoppedStatus = By.CssSelector(".text-danger");
         private readonly By listenerRunningStatus = By.CssSelector(".text-success");
-
+        private readonly By newListenerButton = By.XPath("//app-root/main[@role='main']/div[@class='p-3']//app-listener/div[@class='p-3']//button[@class='btn btn-secondary float-right']");
+        private readonly By listenerNameField = By.XPath("//div[@id='createModal']/div[@role='document']//div[@class='modal-body']//input[@placeholder='Name *']");
+        private readonly By listenerAET = By.XPath("//div[@id='createModal']/div[@role='document']//div[@class='modal-body']//input[@placeholder='Application entity title *']");
+        private readonly By listenerPort = By.XPath("//div[@id='createModal']/div[@role='document']//div[@class='modal-body']//input[@placeholder='Listener Port (Eg:- 9090) *']");
+        private readonly By listenerSaveButton = By.XPath("//div[#'createModal']/div[@role='document']//button[@innertext='Save']");
+        public string listenerConfirmationMessage;
+        private readonly By listenerCreationConfirmation = By.XPath("//div[@id='cdk-overlay-1']/snack-bar-container[@role='status']//span[.='Listener created successfully']");
+        private readonly By editListenerButton = By.XPath("(//td[contains(text(),'Listener_')]/parent::tr//th)[2]");
+        public string editConfirmationMessage;
+        private readonly By listenerEditionConfirmation = By.XPath("//body/div[2]/div/div/snack-bar-container[@role='status']/simple-snack-bar[@class='mat-simple-snackbar ng-star-inserted']/span[.='Selected Listener modified successfully.']");
+        private By listenerDeleteButon = By.XPath("(//td[contains(text(),'Modified')]/parent::tr//th)[3]");
+        private By confirmListenerRemoval = By.XPath("//mat-dialog-container[@id='mat-dialog-2']/app-confirmation-dialog[@class='ng-star-inserted']//button[@class='btn-action mat-raised-button']/span[@class='mat-button-wrapper']");
+        public string deleteConfirmationMessage;
+        private By removalNotification = By.XPath("//body/div[2]/div/div/snack-bar-container[@role='status']/simple-snack-bar[@class='mat-simple-snackbar ng-star-inserted']/span[.='Listener deleted successfully']");
+        
         // Search & Retrieve sub-tab Elements
         private readonly By searchAndRetrieveSubTab = By.CssSelector("li:nth-of-type(3) > .nav-link");
         private readonly By serverDropDownSearchAndRetrieve = By.CssSelector("select#sever");
@@ -155,7 +169,7 @@ namespace AutomationFramework.Pages
 
 
 
-        public void CreateFileServer(String fileServerName)
+        public void CreateFileServer(string fileServerName)
         {
             Click(createNewServer);
             Driver.FindElement(serverNameField).SendKeys(fileServerName);
@@ -169,12 +183,12 @@ namespace AutomationFramework.Pages
             WaitUntilElementVisible(serverConfirmationMessage);
         }
        
-        public String GetCreationConfirmationMessage()
+        public string GetCreationConfirmationMessage()
         {
             return getConfirmationText = Driver.FindElement(serverConfirmationMessage).Text;
         }
 
-        public void CreateDicomwebServer(String dicomwebServerName)
+        public void CreateDicomwebServer(string dicomwebServerName)
         {
             Click(createNewServer);
             Driver.FindElement(serverNameField).SendKeys(dicomwebServerName);
@@ -193,12 +207,12 @@ namespace AutomationFramework.Pages
             WaitUntilElementVisible(serverRemovalConfirmationMessage);
         }
 
-        public String GetRemovalConfirmation()
+        public string GetRemovalConfirmation()
         {
             return confirmationMessage = Driver.FindElement(serverRemovalConfirmationMessage).Text;
         }
 
-        public void UploadBDFile(String datasetName)
+        public void UploadBDFile(string datasetName)
         {
             Click(dataSourceDropdown);
             Click(dcm4cheeWebTestEnv);
@@ -210,7 +224,7 @@ namespace AutomationFramework.Pages
             Sleep(8);
         }
 
-        public void UploadBDFile2(String datasetName)
+        public void UploadBDFile2(string datasetName)
         {
             Click(dataSourceDropdown);
             Click(dcm4cheeWebTestEnv);
@@ -223,7 +237,7 @@ namespace AutomationFramework.Pages
         }
 
 
-        public void UploadPXSFile(String datasetName)
+        public void UploadPXSFile(string datasetName)
         {
             Click(dataSourceDropdown);
             Click(dcm4cheeWebTestEnv);
@@ -240,9 +254,49 @@ namespace AutomationFramework.Pages
             Driver.SwitchTo().Window(Driver.WindowHandles[0]);
         }
 
-       
 
+        public void CreateListener(string listener, string aet, string port)
+        {
+            Click(newListenerButton);
+            IWebElement listenerName = Driver.FindElement(listenerNameField);
+            listenerName.SendKeys(listener);
+            IWebElement entityTitle = Driver.FindElement(listenerAET);
+            entityTitle.SendKeys(aet);
+            IWebElement portNumber = Driver.FindElement(listenerPort);
+            portNumber.SendKeys(port);
+            Click(listenerSaveButton);
+        }
 
+        public string GetListenerConfirmation()
+        {
+            return listenerConfirmationMessage = Driver.FindElement(listenerCreationConfirmation).Text;
+        }
+
+        public void ModifyListener()
+        {
+            Click(editListenerButton);
+            IWebElement listenerName = Driver.FindElement(listenerNameField);
+            listenerName.Clear();
+            listenerName.SendKeys("ModifiedListener");
+            Click(listenerSaveButton);
+        }
+
+        public string GetModificationConfirmation()
+        {
+            return editConfirmationMessage = Driver.FindElement(listenerEditionConfirmation).Text;
+        }
+
+        public void DeleteListener()
+        {
+            Click(listenerDeleteButon);
+            Click(confirmListenerRemoval);
+
+        }
+
+        public string GetRemovalNotification()
+        {
+            return deleteConfirmationMessage = Driver.FindElement(removalNotification).Text;
+        }
 
     }
 }
