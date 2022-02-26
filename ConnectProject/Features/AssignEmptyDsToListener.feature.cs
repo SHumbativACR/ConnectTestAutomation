@@ -20,22 +20,22 @@ namespace ConnectProject.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("ACR CreateListener")]
-    public partial class ACRCreateListenerFeature
+    [NUnit.Framework.DescriptionAttribute("AssignEmptyDsToListener")]
+    public partial class AssignEmptyDsToListenerFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
         private string[] _featureTags = ((string[])(null));
         
-#line 1 "CreateListener.feature"
+#line 1 "AssignEmptyDsToListener.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "ACR CreateListener", "\tVerifying if user is able to create a DICOM listener", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "AssignEmptyDsToListener", "\tVerifying if user is able to assign empty dataset to DICOM listener", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -74,18 +74,16 @@ namespace ConnectProject.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Verify user is able to create a DICOM listener and confirmation message is displa" +
-            "yed once the listener is created")]
+        [NUnit.Framework.DescriptionAttribute("Verify user is able to assign empty dataset to DICOM listener")]
         [NUnit.Framework.CategoryAttribute("SmokeTest")]
-        [NUnit.Framework.CategoryAttribute("test-CreateListenerTest")]
-        public virtual void VerifyUserIsAbleToCreateADICOMListenerAndConfirmationMessageIsDisplayedOnceTheListenerIsCreated()
+        [NUnit.Framework.CategoryAttribute("test-AssignDatasetTest")]
+        public virtual void VerifyUserIsAbleToAssignEmptyDatasetToDICOMListener()
         {
             string[] tagsOfScenario = new string[] {
                     "SmokeTest",
-                    "test-CreateListenerTest"};
+                    "test-AssignDatasetTest"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify user is able to create a DICOM listener and confirmation message is displa" +
-                    "yed once the listener is created", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify user is able to assign empty dataset to DICOM listener", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 6
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -107,13 +105,19 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 7
- testRunner.Given("User navigates to Connect DICOM Listeners sub-tab", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("User navigates to Data section in Data Manager service", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 8
- testRunner.When("User creates a new DICOM listener and saves it", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And("Creates empty dataset", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 9
- testRunner.Then("Confirmation message is displayed successfully5", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.And("User navigates to DICOM Listeners page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 10
+ testRunner.When("User creates a listener and assings empty dataset to the listener", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 11
+ testRunner.Then("Confirmation message will be displayed successfully2", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

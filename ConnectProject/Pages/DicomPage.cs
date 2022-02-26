@@ -67,11 +67,15 @@ namespace AutomationFramework.Pages
         private readonly By editListenerButton = By.XPath("(//td[contains(text(),'Listener_')]/parent::tr//th)[2]");
         public string editConfirmationMessage;
         private readonly By listenerEditionConfirmation = By.XPath("//body/div[2]/div/div/snack-bar-container[@role='status']/simple-snack-bar[@class='mat-simple-snackbar ng-star-inserted']/span[.='Selected Listener modified successfully.']");
-        private By listenerDeleteButon = By.XPath("(//td[contains(text(),'Modified')]/parent::tr//th)[3]");
-        private By confirmListenerRemoval = By.XPath("//mat-dialog-container[@id='mat-dialog-2']/app-confirmation-dialog[@class='ng-star-inserted']//button[@class='btn-action mat-raised-button']/span[@class='mat-button-wrapper']");
+        private readonly By listenerDeleteButon = By.XPath("(//td[contains(text(),'Modified')]/parent::tr//th)[3]");
+        private readonly By confirmListenerRemoval = By.XPath("//mat-dialog-container[@id='mat-dialog-2']/app-confirmation-dialog[@class='ng-star-inserted']//button[@class='btn-action mat-raised-button']/span[@class='mat-button-wrapper']");
         public string deleteConfirmationMessage;
-        private By removalNotification = By.XPath("//body/div[2]/div/div/snack-bar-container[@role='status']/simple-snack-bar[@class='mat-simple-snackbar ng-star-inserted']/span[.='Listener deleted successfully']");
-        
+        private readonly By removalNotification = By.XPath("//body/div[2]/div/div/snack-bar-container[@role='status']/simple-snack-bar[@class='mat-simple-snackbar ng-star-inserted']/span[.='Listener deleted successfully']");
+        private readonly By assignButton = By.XPath("(//td[contains(text(),'ModifiedListener')])[1]//parent::tr//following-sibling::td[5]//*[contains(text(),'Assign')]");
+        private readonly By selectDatasetButton = By.XPath("//input[@class='mat-input-element mat-form-field-autofill-control cdk-text-field-autofill-monitored ng-untouched ng-pristine ng-valid']");
+        public string selectDSConfirmationMessage;
+        private readonly By selectDSConfirmation = By.XPath("//body/div[2]/div/div/snack-bar-container[@role='status']/simple-snack-bar[@class='mat-simple-snackbar ng-star-inserted']/span[.='Dataset Association saved successfully']");
+
         // Search & Retrieve sub-tab Elements
         private readonly By searchAndRetrieveSubTab = By.CssSelector("li:nth-of-type(3) > .nav-link");
         private readonly By serverDropDownSearchAndRetrieve = By.CssSelector("select#sever");
@@ -296,6 +300,19 @@ namespace AutomationFramework.Pages
         public string GetRemovalNotification()
         {
             return deleteConfirmationMessage = Driver.FindElement(removalNotification).Text;
+        }
+
+        public void AssignDatasetToListener()
+        {
+            Click(assignButton);
+            IWebElement selectDataset = Driver.FindElement(selectDatasetButton);
+            selectDataset.SendKeys("ModifiedListener");
+            selectDataset.SendKeys(Keys.Enter);
+        }
+
+        public string GetDSAssignNotification()
+        {
+            return selectDSConfirmationMessage = Driver.FindElement(selectDSConfirmation).Text;
         }
 
     }

@@ -77,12 +77,12 @@ namespace ConnectProject.Features
         [NUnit.Framework.DescriptionAttribute("Verify user is able to delete a server and confirmation message is displayed once" +
             " the server is deleted")]
         [NUnit.Framework.CategoryAttribute("SmokeTest")]
-        [NUnit.Framework.CategoryAttribute("test-FileServerTest")]
+        [NUnit.Framework.CategoryAttribute("test-DeleteServerTest")]
         public virtual void VerifyUserIsAbleToDeleteAServerAndConfirmationMessageIsDisplayedOnceTheServerIsDeleted()
         {
             string[] tagsOfScenario = new string[] {
                     "SmokeTest",
-                    "test-FileServerTest"};
+                    "test-DeleteServerTest"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify user is able to delete a server and confirmation message is displayed once" +
                     " the server is deleted", null, tagsOfScenario, argumentsOfScenario, this._featureTags);

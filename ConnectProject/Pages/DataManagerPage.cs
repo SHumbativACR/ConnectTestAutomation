@@ -143,7 +143,19 @@ namespace AutomationFramework.Pages
             Sleep(3);
         }
 
-
-
+        public void CreateEmptyDataset(string datasetName)
+        {
+            Click(createNewDatasetFromDataSection);
+            Driver.FindElement(datasetNameField).SendKeys(datasetName);
+            Click(saveButton);
         }
+
+        public void NavigateToDataManagerServiceDataSection()
+        {
+            Click(dataSection);
+            Sleep(2);
+        }
+
+
+    }
 }
