@@ -22,9 +22,9 @@ using static Enterprise.Framework.Actions.BaseActions;
 
 
 namespace AutomationFramework.Steps
-{
+{  
     public class LoginSteps : BaseSteps
-    {
+    { 
        // readonly string url = "https://connect-test.acr.org/";
         readonly string username = "acrconnect.testuser1@yahoo.com";
         readonly string password = "TEstaccount1";
@@ -56,6 +56,7 @@ namespace AutomationFramework.Steps
         }
 
 
-
+        
     }
+    
 }
