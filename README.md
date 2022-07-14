@@ -111,3 +111,4 @@ livingdoc test-assembly C:\SourceCode\main_repo\EnterpriseFrameworkCsharp\Projec
 2. Each scenario should be created with "@test-<scenario-short-name>"
 3. Scenario tags should be clearly mentioned like @regression @test etc
 
+test
